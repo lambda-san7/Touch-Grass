@@ -15,7 +15,7 @@ fps = 60
 
 clock = pygame.time.Clock()
 
-#favicon = pygame.image.load(f"{dir_path}/switch logo.png").convert_alpha()
+favicon = pygame.image.load(f"{dir_path}/grass.jpg")
 grass = pygame.transform.scale(pygame.image.load(f"{dir_path}/grass.jpg"),(200,200))
 #menu_icon = pygame.transform.scale(pygame.image.load(f"{dir_path}/round invert logo.png"),(200,200))
 
@@ -66,5 +66,12 @@ class text:
         self.h = self.text.get_height()
     def render(self,x,y):
         self.font = pygame.font.Font(f"{dir_path}/font.ttf",self.size_holder)
+
+        self.text = self.font.render(self.text_holder, True, (0,0,0))
+        window.blit(self.text,(x,y - 2))
+        window.blit(self.text,(x,y + 2))
+        window.blit(self.text,(x - 2,y))
+        window.blit(self.text,(x + 2,y))
+
         self.text = self.font.render(self.text_holder, True, self.color)
         window.blit(self.text,(x,y))

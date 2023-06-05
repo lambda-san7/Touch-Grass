@@ -12,15 +12,16 @@ from assets import (
     clock,
     grass,
     center,
-    button
+    button,
+    favicon
 )
 
 ########################
 # DEFAULT SHIT
 ########################
 
-pygame.display.set_caption("Stream")
-#pygame.display.set_icon(favicon)
+pygame.display.set_caption("Grass")
+pygame.display.set_icon(favicon)
 clicks = 0
 color = (255,255,255)
 
@@ -45,24 +46,26 @@ class game:
         if MyButton.hover(center.x(MyButton.txt.w),center.y(MyButton.txt.h)):
             MyButton = button("Now Click!",32,color)
         if MyButton.click(center.x(MyButton.txt.w),center.y(MyButton.txt.h)):
-            MyButton = button("YAY! You Got It!",32,color)
             clicks += 1
+            print(color)
             color = list(color)
-            if color[2] - 10 <= 0:
-                color[1] -= 10
-            if color[2] - 10 > 0:
+            if color[0] == 5:
+                if color[1] == 255:
+                    color[2] += 10
+                    return
+                color[1] += 10
+                return
+            if color[2] != 5:
                 color[2] -= 10
+                return
+            if color[1] != 5:
+                color[1] -= 10
+                return
+            if color[0] != 5:
+                color[0] -= 10
+                return    
             color = tuple(color)
         MyButton.render(center.x(MyButton.txt.w),center.y(MyButton.txt.h))
- #       msg = text(32,"Touch The Grass")
-#        if (pygame.mouse.get_pos()[0] < (pygame.display.Info().current_w / 2) - (msg.w / 2) + msg.w and
- #           pygame.mouse.get_pos()[0] > (pygame.display.Info().current_w / 2) - (msg.w / 2) and
-  #          pygame.mouse.get_pos()[1] < 2.5 * 100 + msg.h and
-   #         pygame.mouse.get_pos()[1] > 2.5 * 100):
-    #        msg.text_holder = "Now Click!"
-     #      if pygame.mouse.get_pressed()[0]:
-      #          msg.text_holder = "YAY!!"
-       # msg.render((pygame.display.Info().current_w / 2) - (msg.w / 2), 2.5 * 100)
 
 ########################
 # GAME LOOP
