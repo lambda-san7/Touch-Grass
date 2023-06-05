@@ -37,9 +37,9 @@ class game:
         global color
         window.fill((50,50,50))
         if clicks == 1:
-            msg = text(32,f"You Have Touched {clicks} Time")
+            msg = text(32,f"You Have Touched {clicks} Time",thicc=2)
         if clicks != 1:
-            msg = text(32,f"You Have Touched {clicks} Times")
+            msg = text(32,f"You Have Touched {clicks} Times",thicc=2)
         msg.render(10,10)
         window.blit(grass,(center.x(200),center.y(200)))
         MyButton = button("Touch The Grass!",32,color)
